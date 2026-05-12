@@ -43,7 +43,6 @@ from werkzeug.utils import secure_filename
 
 from database.db import (
     CATEGORY_TO_DEPARTMENT,
-    CONTACT_AREAS,
     STATUS_FLOW,
     count_user_complaints,
     create_user_account,
