@@ -28,7 +28,10 @@ from uuid import uuid4
 
 import joblib
 import requests
+from dotenv import load_dotenv
 from flask import Flask, flash, jsonify, redirect, render_template, request, session, url_for
+
+load_dotenv()
 from sklearn.metrics.pairwise import cosine_similarity
 try:
     from moviepy.editor import VideoFileClip
@@ -70,8 +73,8 @@ from database.db import (
 # =============================================================================
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "citizen-grievance-demo-secret"
-ADMIN_PASSWORD = "admin"
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "citizen-grievance-demo-secret")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "admin")
 
 UPLOAD_FOLDER = os.path.join("static", "uploads")
 IMAGE_EXTENSIONS = {"jpg", "jpeg", "png"}
